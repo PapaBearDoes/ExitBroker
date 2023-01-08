@@ -56,13 +56,16 @@ end
 
 function ExitBroker:ButtonClick(modifier)
 	if modifier == "SHIFT" then
-		hooksecurefunc("Logout", function() Logout() end) --Logout
+		--hooksecurefunc("Logout", function() Logout() end)
+    Logout()
 	elseif modifier == "CONTROL" then
-		hooksecurefunc("Quit", function() Quit() end) --Quit
+		--hooksecurefunc("Quit", function() Quit() end)
+    Quit()
 	elseif modifier == "ALT" then
 		--Do Nothing (yet)
 	else
-		hooksecurefunc("ReloadUI", function() ReloadUI() end)
+		--hooksecurefunc("ReloadUI", function() ReloadUI() end)
+    ReloadUI()
 	end
 end
 --[[
