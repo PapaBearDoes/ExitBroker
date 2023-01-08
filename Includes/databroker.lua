@@ -18,7 +18,7 @@ local L = ExitBroker:GetLocale()
 --   ## Do All The Things!!!
 --LDB
 ExitBroker_LDB = LibStub("LibDataBroker-1.1")
-ExitBrokerLDB = ExitBroker_LDB:NewDataObject("DadGratzLDB", {
+ExitBrokerLDB = ExitBroker_LDB:NewDataObject("ExitBrokerLDB", {
   type = "launcher",
   label = myName,
   text = "",
@@ -56,9 +56,9 @@ end
 
 function ExitBroker:ButtonClick(modifier)
 	if modifier == "SHIFT" then
-		hooksecurefunc("Logout", function Logout() end) -- Logout
+		hooksecurefunc("Logout", function() Logout() end) --Logout
 	elseif modifier == "CONTROL" then
-		hooksecurefunc("Quit", function Quit() end)--Hard Quit
+		hooksecurefunc("Quit", function() Quit() end) --Quit
 	elseif modifier == "ALT" then
 		--Do Nothing (yet)
 	else
