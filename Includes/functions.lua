@@ -16,13 +16,6 @@ local L = ExitBroker:GetLocale()
 -- End Imports
 --[[ ######################################################################## ]]
 --   ## Do All The Things!!!
--- Config window --
-function ExitBroker:ShowConfig()
-  InterfaceOptionsFrame_OpenToCategory(ExitBrokerOptionFrames.general)
-  InterfaceOptionsFrame_OpenToCategory(ExitBrokerOptionFrames.profile)
-end
--- End Options --
-
 function ExitBroker:UpdateOptions()
   LibStub("AceConfigRegistry-3.0"):NotifyChange(me)
 end
