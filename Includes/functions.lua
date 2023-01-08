@@ -18,8 +18,8 @@ local L = ExitBroker:GetLocale()
 --   ## Do All The Things!!!
 -- Config window --
 function ExitBroker:ShowConfig()
-  InterfaceOptionsFrame_OpenToCategory(ExitBrokerFrames.general)
-  InterfaceOptionsFrame_OpenToCategory(ExitBrokerFrames.profile)
+  InterfaceOptionsFrame_OpenToCategory(ExitBrokerOptionFrames.general)
+  InterfaceOptionsFrame_OpenToCategory(ExitBrokerOptionFrames.profile)
 end
 -- End Options --
 
