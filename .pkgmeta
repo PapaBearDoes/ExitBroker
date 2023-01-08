@@ -1,0 +1,13 @@
+package-as: ExitBroker
+
+externals:
+  libs/LibStub: https://repos.curseforge.com/wow/libstub/trunk
+  libs/LibDataBroker-1.1: http://github.com/tekkub/libdatabroker-1-1/
+
+enable-nolib-creation: no
+
+license-output: LICENSE
+
+tools-used:
+    - libdatabroker-1-1
+    - libstub

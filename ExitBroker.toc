@@ -1,0 +1,18 @@
+## Interface: 90001
+## Title: ExitBroker
+## Author: PapaBearDoes
+## Version: 4.0.0-alpha
+## Notes: One Click Forced Exit/Logout/Reload UI button for Broker
+## SavedVariablesPerCharacter: ExitBrokerSV
+
+# Load Libraries
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+libs\AceAddon-3.0\AceAddon-3.0.lua
+libs\AceConsole-3.0\AceConsole-3.0.lua
+libs\AceDB-3.0\AceDB-3.0.lua
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+
+# Load Main file
+ExitBroker.lua
