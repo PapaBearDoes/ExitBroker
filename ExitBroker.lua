@@ -42,6 +42,11 @@ function ExitBroker:OnEnable()
   ExitBrokerOptionFrames.general = ExitBrokerDialog:AddToBlizOptions(myName, nil, nil, "general")
   ExitBrokerOptionFrames.profile = ExitBrokerDialog:AddToBlizOptions(myName, L["Profiles"], myName, "profile")
 end
+
+function ExitBroker:ShowConfig()
+  InterfaceOptionsFrame_OpenToCategory(ExitBrokerOptionFrames.general)
+--  InterfaceOptionsFrame_OpenToCategory(ExitBrokerOptionFrames.profile)
+end
 --[[
      ########################################################################
      |  Last Editted By: @file-author@ - @file-date-iso@
