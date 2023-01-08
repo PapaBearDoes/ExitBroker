@@ -32,6 +32,15 @@ L["Options"] = true
 L["ShowMinimapButton"] = "Show Minimap Button"
 L["ShowMinimapButtonDesc"] = "Show Minimap Button Description"
 L["Profile"] = true
+L["RELOAD"] = true
+L["LeftClick"] = true
+L["Icon"] = true
+L["LOGOUT"] = true
+L["EXIT"] = true
+L["ShiftLeftClick"] = "<SHIFT> + Left Click"
+L["ControlLeftClick"] = "<CONTROL> + Left Click"
+L["RightClick"] = "Right Click"
+L["RightToolTip"] = " to open configuration."
 --[[
      ########################################################################
      |  Last Editted By: @file-author@ - @file-date-iso@
