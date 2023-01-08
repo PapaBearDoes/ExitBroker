@@ -1,3 +1,70 @@
+--[[
+                                      \\\\///
+                                     /       \
+                                   (| (.)(.) |)
+     .---------------------------.OOOo--()--oOOO.---------------------------.
+     |                                                                      |
+     |  PapaBearDoes's DadGratz Addon for World of Warcraft                 |
+     |  @project-version@
+     ######################################################################## ]]
+--   ## Let's init this file shall we?
+-- Imports
+local _G = _G
+local myName, addon = ...
+local initOptions = {
+  profile = "Default",
+  noswitch = false,
+  nogui = false,
+  nohelp = false,
+  enhancedProfile = true
+}
+local ExitBroker = LibStub("LibInit"):NewAddon(addon, myName, initOptions, true)
+local L = ExitBroker:GetLocale()
+-- End Imports
+--   ######################################################################## ]]
+--   ## Do All The Things!!!
+--[[FUNCTIONS]]
+function ExitBroker:OnInitialize()
+  ExitBroker.db = LibStub("AceDB-3.0"):New("ExitBrokerSV", ExitBroker.dbDefaults, "Default")
+  ExitBroker.db.RegisterCallback(self, "OnProfileChanged", "UpdateProfile")
+  ExitBroker.db.RegisterCallback(self, "OnProfileCopied", "UpdateProfile")
+  ExitBroker.db.RegisterCallback(self, "OnProfileReset", "UpdateProfile")
+  
+  ExitBroker.options.args.profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(ExitBroker.db)
+  LibStub("AceConfig-3.0"):RegisterOptionsTable(myName, ExitBroker.options, nil)
+
+  -- Enable/disable modules based on saved settings
+	for name, module in ExitBroker:IterateModules() do
+		module:SetEnabledState(ExitBroker.db.profile.moduleEnabledState[name] or false)
+    if module.OnEnable then
+      hooksecurefunc(module, "OnEnable", ExitBroker.OnModuleEnable_Common)
+    end
+  end
+
+  ExitBroker:MiniMapIcon()
+end
+
+function ExitBroker:OnEnable()
+  local ExitBrokerDialog = LibStub("AceConfigDialog-3.0")
+  ExitBrokerFrames = {}
+  ExitBrokerFrames.general = ExitBrokerDialog:AddToBlizOptions(myName, nil, nil, "general")
+  ExitBrokerOptionFrames.profile = ExitBrokerDialog:AddToBlizOptions(myName, L["Profiles"], myName, L["Profile"])
+end
+
+function ExitBroker:OnModuleEnable_Common()
+end
+--[[
+     ########################################################################
+     |  Last Editted By: @file-author@ - @file-date-iso@
+     |  @file-hash@
+     |                                                                      |
+     '-------------------------.oooO----------------------------------------|
+                              (    )     Oooo.
+                              \  (     (    )
+                               \__)     )  /
+                                       (__/                                   ]]
+
+--[[
 local exitbroker = LibStub("AceAddon-3.0"):NewAddon("ExitBroker", "AceConsole-3.0")
 local ExitBrokerButton = CreateFrame("Button", "ExitBrokerClickButton", UIParent, "SecureHandlerClickTemplate")
 ExitBrokerButton:SetAttribute("_onclick", [=[
@@ -18,8 +85,8 @@ ExitBrokerButton:SetAttribute("_onclick", [=[
 ExitBrokerButton:RegisterForClicks("LeftButtonUp")
 
 local ExitBrokerLDB = LibStub("LibDataBroker-1.1"):NewDataObject("ExitBroker", {
-  type = "data source",
-  text = "ExitBroker",
+  type = "launcher",
+  text = myName,
 	icon = "Interface\\Icons\\inv_pandarenserpentmount_yellow",
 	OnTooltipShow = function(tooltip)
 		tooltip:AddDoubleLine("To |cff1eff00RELOAD|r:", "|cff1eff00Left Click|r Icon.");
