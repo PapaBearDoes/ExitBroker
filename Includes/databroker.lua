@@ -34,16 +34,20 @@ ExitBrokerLDB = ExitBroker_LDB:NewDataObject("ExitBrokerLDB", {
 			else
 				ReloadUI();
 			end
-		end
+		elseif click == "RightButton" then
+      ExitBroker:ShowConfig()
+    end
   end,
   OnTooltipShow = function(tooltip)
     if not tooltip or not tooltip.AddLine then
       return
     end
     tooltip:AddLine(myName .. " " .. GetAddOnMetadata(myName, "Version"))
-    tooltip:AddDoubleLine("To |cff1eff00RELOAD|r:", "|cff1eff00Left Click|r Icon.");
-    tooltip:AddDoubleLine("To |cffff8000LOGOUT|r:", "|cffff8000<SHIFT> + Left Click|r Icon.");
-    tooltip:AddDoubleLine("To |cffa335eeEXIT|r:", "|cffa335ee<CONTROL> + Left Click|r Icon.");
+    tooltip:AddDoubleLine("To " .. ExitBroker:Colorize(L["RELOAD"], "1eff00"), ExitBroker:Colorize(L["LeftClick"], "1eff00") .. " " .. L["Icon"] .. ".");
+    tooltip:AddDoubleLine("To " .. ExitBroker:Colorize(L["LOGOUT"], "ff8000"), ExitBroker:Colorize(L["ShiftLeftClick"], "ff8000") .. L["Icon"] .. ".");
+    tooltip:AddDoubleLine("To " .. ExitBroker:Colorize(L["EXIT"], "a335ee"), ExitBroker:Colorize(L["ControlLeftClick"], "a335ee") .. L["Icon"] .. ".");
+    tooltip:AddLine(" ")
+    tooltip:AddLine(ExitBroker:Colorize(L["RightClick"] .. " ", "eda55f") .. L["RightToolTip"])
   end,
 })
 
@@ -56,15 +60,12 @@ end
 
 function ExitBroker:ButtonClick(modifier)
 	if modifier == "SHIFT" then
-		--hooksecurefunc("Logout", function() Logout() end)
-    Logout()
+    --Logout() is now a protected function, we must figure out another way
 	elseif modifier == "CONTROL" then
-		--hooksecurefunc("Quit", function() Quit() end)
-    Quit()
+    --Quit() is now a protected function, we must figure out another way
 	elseif modifier == "ALT" then
 		--Do Nothing (yet)
 	else
-		--hooksecurefunc("ReloadUI", function() ReloadUI() end)
     ReloadUI()
 	end
 end
